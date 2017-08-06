@@ -1,0 +1,150 @@
+///////////////
+// VARIABLES //
+///////////////
+@import 'common/variables.scss';
+
+
+////////////
+// GLOBAL //
+////////////
+@import 'common/global.scss';
+
+
+////////////////
+// COMPONENTS //
+////////////////
+@import 'common/components.scss';
+
+
+////////////////
+// ANIMATIONS //
+////////////////
+@import 'common/animations.scss';
+
+
+/////////////
+// CONTENT //
+/////////////
+.container { width: 88%; }
+
+.title {
+    color: #414554;
+    color: #525769;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+@media only screen and (min-width: 48em) {
+    .container { width: 82%; }
+}
+
+@media only screen and (min-width: 64em) {
+    .col-md,
+    .col-md-1,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-offset-0,
+    .col-md-offset-1,
+    .col-md-offset-10,
+    .col-md-offset-11,
+    .col-md-offset-12,
+    .col-md-offset-2,
+    .col-md-offset-3,
+    .col-md-offset-4,
+    .col-md-offset-5,
+    .col-md-offset-6,
+    .col-md-offset-7,
+    .col-md-offset-8,
+    .col-md-offset-9 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+
+////////////
+// NAVBAR //
+////////////
+.navbar {
+    height: 64px;
+
+    .navbar-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: inherit;
+        background-color: #fff;
+        z-index: 9;
+    }
+
+    .container {
+        height: inherit;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: .8rem;
+        padding-bottom: .8rem;
+    }
+
+    .logo { max-width: 5rem; }
+
+    .menu {
+        display: none;
+
+        padding-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &-item {
+            list-style: none;
+            display: inline-block;
+        }
+
+        &-link {
+            color: #000;
+            font-size: .83rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media only screen and (min-width: 48em) {
+    .navbar {
+        .container { justify-content: flex-start; }
+
+        .btn-mobile-menu { display: none; }
+
+        .menu {
+            display: block;
+            margin-left: 2rem;
+
+            &-item  + .menu-item { margin-left: 1rem; }
+        }
+
+        .cart-button { margin-left: auto; }
+    }
+}
+
+
+
+//////////////
+// PRODUCTS //
+//////////////
+.slider {
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
