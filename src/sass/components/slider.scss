@@ -1,0 +1,22 @@
+.slider {
+
+}
+
+/*
+ * Bullets to controll the slider
+ */
+.slider-bullets {
+    display: flex;
+    justify-content: center;
+}
+.bullet {
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+
+    &.active { background-color: #ccc }
+
+    & + & { margin-left: .5rem; }
+}

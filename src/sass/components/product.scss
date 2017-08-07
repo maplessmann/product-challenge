@@ -1,0 +1,43 @@
+.product {
+    font-size: .9rem;
+    border: 2px solid transparent;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    transition:
+        transform .6s ease,
+        border-color .4s ease;
+
+    &:hover {
+        transform: translate3d(0, -.8rem, 0);
+        border-color: #eee;
+
+        .btn {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    &-title {
+        font-weight: 700;
+        color: #010101;
+    }
+    &-category { color: #999; }
+
+    .btn {
+        width: 100%;
+        margin-top: 1rem;
+        opacity: 0;
+        transform: translate3d(0, .2rem, 0);
+        transition:
+            opacity .3s ease .15s,
+            transform .4s ease .15s,
+            background-color .3s ease,
+            box-shadow .3s ease;
+
+        &:hover {
+            background-color: transparentize($color-default, .3);
+            box-shadow: 0 2px 35px 0 transparentize($color-default, .7);
+        }
+    }
+}

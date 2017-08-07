@@ -77,20 +77,19 @@
 // NAVBAR //
 ////////////
 .navbar {
-    height: 64px;
+    height: $navbar-height;
 
     .navbar-fixed {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: inherit;
         background-color: #fff;
         z-index: 9;
     }
 
     .container {
-        height: inherit;
+        height: $navbar-height;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -140,6 +139,11 @@
 }
 
 
+////////////
+// HEADER //
+////////////
+.header-image { width: 100%; }
+
 
 //////////////
 // PRODUCTS //
@@ -147,4 +151,11 @@
 .slider {
     flex-wrap: nowrap;
     overflow-x: hidden;
+
+    &:hover > *{
+        transform: translate3d(-400%,0,0);
+    }
+    & > * {
+        transition: transform .3s ease;
+    }
 }
