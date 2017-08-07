@@ -1,0 +1,65 @@
+/*
+ * Categories
+ */
+.filter {
+
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    font-size: .9rem;
+    color: #999;
+
+    & + & { margin-left: 1.5rem; }
+}
+
+.checkbox {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+
+    + label {
+        position: relative;
+        padding-left: 1.6rem;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &::before {
+            background-color: #fafafa;
+            border: 1px solid #ccc;
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+    }
+
+    &:checked + label {
+
+        &::before {
+            background-color: $color-default;
+            border: 1px solid $color-default;
+        }
+
+        &::after {
+            width: .3rem;
+            height: .7rem;
+            border-bottom: 2px solid #fff;
+            border-right: 2px solid #fff;
+            left: .35rem;
+            top: .1rem;
+            transform: rotate(45deg);
+        }
+    }
+}

@@ -30,14 +30,18 @@ block content
     .container
         strong Chuteiras HyperVenom:
         .categories
-            input(type='checkbox')
-            label(for="checkbox") Cano alto
-            input(type='checkbox')
-            label(for="checkbox") Cano baixo
-            input(type='checkbox')
-            label(for="checkbox") Futebol Cmapo
-            input(type='checkbox')
-            label(for="checkbox") Futebol Society
+            .category
+                input#cano-alto.checkbox(type='checkbox')
+                label(for="cano-alto") Cano alto
+            .category
+                input#cano-baixo.checkbox(type='checkbox')
+                label(for="cano-baixo") Cano baixo
+            .category
+                input#futebol-campo.checkbox(type='checkbox')
+                label(for="futebol-campo") Futebol Cmapo
+            .category
+                input#futebol-society.checkbox(type='checkbox')
+                label(for="futebol-society") Futebol Society
             
         .products-group.products-best-sellers
             h4.products-group-title Mais vendidos
