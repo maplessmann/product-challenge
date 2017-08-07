@@ -28,7 +28,6 @@ block content
         img.header-image(src='images/banner.png', alt='Jogador chutando uma bola')
         
     .container
-        h4.products-list-title Mais vendidos
         strong Chuteiras HyperVenom:
         .categories
             input(type='checkbox')
@@ -39,11 +38,15 @@ block content
             label(for="checkbox") Futebol Cmapo
             input(type='checkbox')
             label(for="checkbox") Futebol Society
-        .products-group.slider.row
             
-        .slider-bullets
-            .bullet
-            .bullet
-            .bullet
+        .products-group.products-best-sellers
+            h4.products-group-title Mais vendidos
+            .slider.row
+            .slider-bullets
+                
+        .products-group.products-releases
+            h4.products-group-title Lançamentos
+            .slider.row
+            .slider-bullets
         
     //- .menu-overlay
