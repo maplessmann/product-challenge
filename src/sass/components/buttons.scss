@@ -2,16 +2,22 @@
 .btn {
     background-color: $color-default;
     border: 0;
-    border-radius: .4rem;
+    border-radius: .3rem;
     color: #fff;
     font-family: inherit;
+    font-size: .9rem;
     text-align: center;
     text-transform: uppercase;
     display: inline-block;
-    padding: 1rem 1.6rem;
+    padding: 1rem 1.2rem;
     transition: opacity .3s ease;
     cursor: pointer;
     outline: none;
 
-    &:hover { opacity: .5; }
+    &:hover { opacity: .7; }
+}
+
+.btn-dark {
+    background-color: #313131;
+    color: #fff;
 }

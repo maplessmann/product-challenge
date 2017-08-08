@@ -27,30 +27,38 @@ block content
     header.header
         img.header-image(src='images/banner.png', alt='Jogador chutando uma bola')
         
-    .container
-        strong Chuteiras HyperVenom:
-        .categories
-            .category
-                input#cano-alto.checkbox(type='checkbox')
-                label(for="cano-alto") Cano alto
-            .category
-                input#cano-baixo.checkbox(type='checkbox')
-                label(for="cano-baixo") Cano baixo
-            .category
-                input#futebol-campo.checkbox(type='checkbox')
-                label(for="futebol-campo") Futebol Cmapo
-            .category
-                input#futebol-society.checkbox(type='checkbox')
-                label(for="futebol-society") Futebol Society
+    section.container
+        .filter
+            strong.filter-title Chuteiras HyperVenom:
+            .categories
+                .category
+                    input#cano-alto.checkbox(type='checkbox')
+                    label(for="cano-alto") Cano alto
+                .category
+                    input#cano-baixo.checkbox(type='checkbox')
+                    label(for="cano-baixo") Cano baixo
+                .category
+                    input#futebol-campo.checkbox(type='checkbox')
+                    label(for="futebol-campo") Futebol Campo
+                .category
+                    input#futebol-society.checkbox(type='checkbox')
+                    label(for="futebol-society") Futebol Society
+            a.btn.btn-dark(href='#') Todos os produtos
             
-        .products-group.products-best-sellers
-            h4.products-group-title Mais vendidos
-            .slider.row
-            .slider-bullets
-                
-        .products-group.products-releases
-            h4.products-group-title Lançamentos
-            .slider.row
-            .slider-bullets
+        .catalog            
+            .products.products-best-sellers
+                h4.products-title Mais vendidos
+                .slider.row
+                .slider-bullets
+                    
+            .products.products-releases
+                h4.products-group-title Lançamentos
+                .slider.row
+                .slider-bullets
         
-    //- .menu-overlay
+    section.cta
+        h2.title Just do it.
+        a.btn.btn-dark(href='#') Todos os produtos
+
+    footer.footer
+        p Nike Copyright 2017 - all rights reserved

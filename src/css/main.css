@@ -30,13 +30,14 @@ a {
 .btn {
   background-color: #ff5c2b;
   border: 0;
-  border-radius: .4rem;
+  border-radius: .3rem;
   color: #fff;
   font-family: inherit;
+  font-size: .9rem;
   text-align: center;
   text-transform: uppercase;
   display: inline-block;
-  padding: 1rem 1.6rem;
+  padding: 1rem 1.2rem;
   -webkit-transition: opacity .3s ease;
   -o-transition: opacity .3s ease;
   transition: opacity .3s ease;
@@ -44,7 +45,11 @@ a {
   outline: none; }
 
 .btn:hover {
-  opacity: .5; }
+  opacity: .7; }
+
+.btn-dark {
+  background-color: #313131;
+  color: #fff; }
 
 /*
  * Menu
@@ -238,25 +243,44 @@ a {
 /*
  * Categories
  */
-.categories {
+.filter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
-
-.category {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: .9rem;
-  color: #999; }
+  margin-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #999;
+  margin-bottom: 2rem; }
 
-.category + .category {
-  margin-left: 1.5rem; }
+.filter .btn {
+  margin-left: auto; }
+
+.category {
+  margin-top: .5rem;
+  margin-bottom: .5rem; }
+
+@media only screen and (min-width: 48em) {
+  .filter-title {
+    margin-right: 1.5rem; }
+  .category {
+    display: inline-block; }
+  .category + .category {
+    margin-left: 1.6rem; } }
+
+@media only screen and (max-width: 48em) {
+  .filter > * {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto; }
+  .filter .btn {
+    margin-top: 1rem;
+    margin-right: auto; } }
 
 .checkbox {
   position: absolute;
@@ -266,7 +290,11 @@ a {
 .checkbox + label {
   position: relative;
   padding-left: 1.6rem;
-  cursor: pointer; }
+  cursor: pointer;
+  color: #999;
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1.3; }
 
 .checkbox + label::before, .checkbox + label::after {
   content: '';
@@ -277,27 +305,43 @@ a {
 .checkbox + label::before {
   background-color: #fafafa;
   border: 1px solid #ccc;
-  width: 1.1rem;
-  height: 1.1rem; }
+  width: 18px;
+  height: 18px;
+  -webkit-transition: background-color .3s ease;
+  -o-transition: background-color .3s ease;
+  transition: background-color .3s ease; }
+
+.checkbox + label::after {
+  width: 5px;
+  height: 11px;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  left: 6px;
+  top: 2px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  opacity: 0;
+  -webkit-transition: opacity .2s ease;
+  -o-transition: opacity .2s ease;
+  transition: opacity .2s ease; }
 
 .checkbox:checked + label::before {
   background-color: #ff5c2b;
   border: 1px solid #ff5c2b; }
 
 .checkbox:checked + label::after {
-  width: .3rem;
-  height: .7rem;
-  border-bottom: 2px solid #fff;
-  border-right: 2px solid #fff;
-  left: .35rem;
-  top: .1rem;
-  -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg); }
+  opacity: 1; }
 
 /*
  * Slider
  */
+.slider {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  overflow-x: hidden;
+  padding-top: 1rem; }
+
 /*
  * Bullets to controll the slider
  */
@@ -325,11 +369,23 @@ a {
 /*
  * Product
  */
+/*
+ * Group of products
+ */
+.products-title {
+  margin-top: 0; }
+
+.products + .products {
+  margin-top: 2rem; }
+
+/*
+ * Single product
+ */
 .product {
-  font-size: .9rem;
   border: 2px solid transparent;
-  padding: 1rem;
-  margin-top: 1rem;
+  font-size: .9rem;
+  line-height: 1.6;
+  padding: 1rem 1rem 2rem 1rem;
   margin-bottom: 1rem;
   -webkit-transition: border-color .4s ease, -webkit-transform .6s ease;
   transition: border-color .4s ease, -webkit-transform .6s ease;
@@ -348,15 +404,26 @@ a {
           transform: translate3d(0, 0, 0); }
 
 .product-title {
+  color: #010101;
   font-weight: 700;
-  color: #010101; }
+  line-height: 1.2; }
 
 .product-category {
-  color: #999; }
+  color: #999;
+  text-transform: capitalize; }
+
+.product-price {
+  color: #666; }
+
+.product-price .price-normal {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700; }
 
 .product .btn {
   width: 100%;
   margin-top: 1rem;
+  line-height: 1.1;
   opacity: 0;
   -webkit-transform: translate3d(0, 0.2rem, 0);
           transform: translate3d(0, 0.2rem, 0);
@@ -533,7 +600,12 @@ a {
   left: 0;
   width: 100%;
   background-color: #fff;
-  z-index: 9; }
+  z-index: 9;
+  -webkit-transform: translateZ(0);
+  /* Avoids "jump" bug with fixed elements on chrome */
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  /* Do the same job */ }
 
 .navbar .container {
   height: 64px;
@@ -588,14 +660,9 @@ a {
 .header-image {
   width: 100%; }
 
-.slider {
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  overflow-x: hidden; }
-
-.slider:hover > * {
-  -webkit-transform: translate3d(-400%, 0, 0);
-          transform: translate3d(-400%, 0, 0); }
+.catalog {
+  margin-top: 4rem;
+  margin-bottom: 4rem; }
 
 .slider > * {
   -webkit-transition: -webkit-transform .3s ease;
@@ -603,3 +670,38 @@ a {
   -o-transition: transform .3s ease;
   transition: transform .3s ease;
   transition: transform .3s ease, -webkit-transform .3s ease; }
+
+.cta {
+  background-image: url("../images/just-do-it.jpg");
+  background-position: center center;
+  background-size: cover;
+  padding-top: 24vh;
+  padding-bottom: 24vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center; }
+
+.cta .title {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-top: 0; }
+
+.footer {
+  color: #999;
+  font-size: .9rem;
+  text-align: center;
+  padding-top: .5rem;
+  padding-bottom: .5rem; }

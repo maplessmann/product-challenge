@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ff5c2b">
     <title>Product Challenge</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,900">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -34,36 +34,46 @@
       </div>
     </nav>
     <header class="header"><img class="header-image" src="images/banner.png" alt="Jogador chutando uma bola"></header>
-    <div class="container"><strong>Chuteiras HyperVenom:</strong>
-      <div class="categories">
-        <div class="category">
-          <input class="checkbox" id="cano-alto" type="checkbox">
-          <label for="cano-alto">Cano alto</label>
+    <section class="container">
+      <div class="filter"><strong class="filter-title">Chuteiras HyperVenom:</strong>
+        <div class="categories">
+          <div class="category">
+            <input class="checkbox" id="cano-alto" type="checkbox">
+            <label for="cano-alto">Cano alto</label>
+          </div>
+          <div class="category">
+            <input class="checkbox" id="cano-baixo" type="checkbox">
+            <label for="cano-baixo">Cano baixo</label>
+          </div>
+          <div class="category">
+            <input class="checkbox" id="futebol-campo" type="checkbox">
+            <label for="futebol-campo">Futebol Campo</label>
+          </div>
+          <div class="category">
+            <input class="checkbox" id="futebol-society" type="checkbox">
+            <label for="futebol-society">Futebol Society</label>
+          </div>
+        </div><a class="btn btn-dark" href="#">Todos os produtos</a>
+      </div>
+      <div class="catalog">           
+        <div class="products products-best-sellers">
+          <h4 class="products-title">Mais vendidos</h4>
+          <div class="slider row"></div>
+          <div class="slider-bullets"></div>
         </div>
-        <div class="category">
-          <input class="checkbox" id="cano-baixo" type="checkbox">
-          <label for="cano-baixo">Cano baixo</label>
-        </div>
-        <div class="category">
-          <input class="checkbox" id="futebol-campo" type="checkbox">
-          <label for="futebol-campo">Futebol Cmapo</label>
-        </div>
-        <div class="category">
-          <input class="checkbox" id="futebol-society" type="checkbox">
-          <label for="futebol-society">Futebol Society</label>
+        <div class="products products-releases">
+          <h4 class="products-group-title">Lançamentos</h4>
+          <div class="slider row"></div>
+          <div class="slider-bullets"></div>
         </div>
       </div>
-      <div class="products-group products-best-sellers">
-        <h4 class="products-group-title">Mais vendidos</h4>
-        <div class="slider row"></div>
-        <div class="slider-bullets"></div>
-      </div>
-      <div class="products-group products-releases">
-        <h4 class="products-group-title">Lançamentos</h4>
-        <div class="slider row"></div>
-        <div class="slider-bullets"></div>
-      </div>
-    </div>
+    </section>
+    <section class="cta">
+      <h2 class="title">Just do it.</h2><a class="btn btn-dark" href="#">Todos os produtos</a>
+    </section>
+    <footer class="footer">
+      <p>Nike Copyright 2017 - all rights reserved</p>
+    </footer>
     <script src="js/main.js"></script>
     <script src="js/modules/product.js"></script>
     <script src="js/modules/cart.js"></script>

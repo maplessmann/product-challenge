@@ -86,6 +86,9 @@
         width: 100%;
         background-color: #fff;
         z-index: 9;
+
+        -webkit-transform: translateZ(0); /* Avoids "jump" bug with fixed elements on chrome */
+        backface-visibility: hidden; /* Do the same job */
     }
 
     .container {
@@ -148,14 +151,54 @@
 //////////////
 // PRODUCTS //
 //////////////
+.catalog {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
 .slider {
-    flex-wrap: nowrap;
-    overflow-x: hidden;
 
     &:hover > *{
-        transform: translate3d(-400%,0,0);
+        // transform: translate3d(-100%,0,0);
     }
     & > * {
         transition: transform .3s ease;
     }
+}
+
+
+/////////
+// CTA //
+/////////
+.cta {
+    background-image: url('../images/just-do-it.jpg');
+    background-position: center center;
+    background-size: cover;
+    padding-top: 24vh;
+    padding-bottom: 24vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    .title {
+        color: #fff;
+        font-size: 4rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-top: 0;
+    }
+}
+
+
+////////////
+// FOOTER //
+////////////
+.footer {
+    color: #999;
+    font-size: .9rem;
+    text-align: center;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
