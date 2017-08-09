@@ -3,15 +3,19 @@ const body = document.querySelector('body');
 
 
 /*
- * Creating a promise
+ * Initializing the arrays
  */
-const productsArray = [],
-      bestSellersArray = [],
-      releasesArray = [];
+const productsArray = [];
 
-const products = fetch('http://www.raphaelfabeni.com.br/rv/data.json');
+/*
+ * Including multiple Promises as a further guarantee of data accessibility.
+ * The first resolved Promise will return the data and ignore the rest.
+ */
+const productsLocal = fetch('http://localhost:8000/src/js/data/data.json');
+const productsRemote = fetch('http://www.raphaelfabeni.com.br/rv/data.json');
 
-products
+Promise
+    .race([productsLocal, productsRemote])
     .then(data => data.json())
     .then(data => {
         productModule.renderBestSellers(data['best-sellers']);
@@ -19,7 +23,6 @@ products
         console.log(data);
     })
     .catch(err => err)
-
 
 
 /*
@@ -30,7 +33,7 @@ const hamburger = document.querySelector('.hamburger'),
 
 function menuToggle() {
     this.classList.toggle('active');
-    
+
     mobileMenu.classList.toggle('active');
 }
 
