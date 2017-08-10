@@ -14,11 +14,6 @@
     .btn { margin-left: auto; }
 }
 
-.categories {
-    // display: flex;
-    // flex-wrap: wrap;
-}
-
 .category {
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -33,15 +28,10 @@
 }
 
 @media only screen and (max-width: 48em) {
-    .filter {
 
-        > * { flex: 1 1 auto; }
+    .filter > * { flex-basis: 100%; }
+    .filter > .btn { margin-top: 1rem; }
 
-        .btn {
-            margin-top: 1rem;
-            margin-right: auto;
-        }
-    }
 }
 
 .checkbox {
