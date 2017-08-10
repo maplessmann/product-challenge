@@ -1,11 +1,27 @@
 const body = document.querySelector('body');
 
 
+/*
+ * Toggle the class 'active' when the user activates the mobile menu
+ */
+const hamburger = document.querySelector('.hamburger'),
+      mobileMenu = document.querySelector('.menu-mobile');
+
+function menuToggle() {
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+}
+
+hamburger.addEventListener('click', menuToggle);
+
+
+
 
 /*
- * Initializing the arrays
+ * Initializing the array of products
  */
 const productsArray = [];
+
 
 /*
  * Including multiple Promises as a further guarantee of data accessibility.
@@ -20,21 +36,54 @@ Promise
     .then(data => {
         productModule.renderBestSellers(data['best-sellers']);
         productModule.renderReleases(data.releases);
-        console.log(data);
+
+        return data;
+    })
+    .then(data => {
+        productsArray.push(...data['best-sellers'], ...data.releases);
+        console.log('Produtos', productsArray);
+
+        listenFilters();
     })
     .catch(err => err)
 
 
+
 /*
- * Menu toggle
+ * Makes the products filter
  */
-const hamburger = document.querySelector('.hamburger'),
-      mobileMenu = document.querySelector('.menu-mobile');
+function listenFilters() {
 
-function menuToggle() {
-    this.classList.toggle('active');
+    const checkboxes = document.querySelectorAll('.category .checkbox');
 
-    mobileMenu.classList.toggle('active');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', makeArray);
+    });
+
+
+    /*
+     * Put all selected filters in an array
+     */
+    let filtros = [];
+
+    function makeArray() {
+        const currentFilter = this.getAttribute('data-filter');
+
+        if(this.checked) {
+            filtros.push(currentFilter);
+        } else {
+            const index = filtros.indexOf(currentFilter);
+            filtros.splice(index, 1);
+        }
+
+        // If filter returns an empty array [], then list all products
+        const filteredProducts = productModule.filter(filtros);
+        const isEmpty = (item) => !item.length > 0;
+        let products = isEmpty(filteredProducts) ? productsArray : filteredProducts;
+        productModule.renderProducts(products, 'best-sellers');
+
+        // updateMarkup(filteredProducts);
+    }
+
+
 }
-
-hamburger.addEventListener('click', menuToggle);

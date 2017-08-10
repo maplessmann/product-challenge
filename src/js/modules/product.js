@@ -14,6 +14,8 @@ const productModule = (function() {
 
         const highTop = (isHigh) => isHigh ? 'Cano Alto' : 'Cano Baixo';
 
+        productsGroup.innerHTML = '';
+
         data.forEach((product) => {
             const markup = `
                 <div class="col-xs-12 col-sm-6 col-md-3">
@@ -32,7 +34,7 @@ const productModule = (function() {
                 </div>
             `;
             productsGroup.insertAdjacentHTML('beforeend', markup);
-            renderBullets(groupClass);
+            // renderBullets(groupClass);
         });
     }
 
@@ -44,12 +46,55 @@ const productModule = (function() {
         renderProducts(data, 'releases');
     }
 
-    function filter(value) {  }
+
+    function filter(filters) {
+
+        // Return all filtered arrays
+        const campo = productsArray
+            .filter(obj => obj.category === 'campo')
+            .map(obj => obj)
+
+        const society = productsArray
+            .filter(obj => obj.category === 'society')
+            .map(obj => obj)
+
+        const highTop = productsArray
+            .filter(obj => obj['high-top'] === true)
+            .map(obj => obj)
+
+        const lowTop = productsArray
+            .filter(obj => obj['high-top'] === false)
+            .map(obj => obj)
+
+        // Clean the temporary array
+        let tempArray = [];
+
+        // Add the filtered items into temporary array
+        const addItem = (array) => {
+            array.forEach(item => {
+                tempArray.includes(item) ? '' : tempArray.push(item);
+            });
+        };
+
+        filters.forEach(filter => {
+            const propertie = filter === 'cano-alto' ? highTop :
+                              filter === 'cano-baixo' ? lowTop :
+                              filter === 'campo' ? campo :
+                              filter === 'society' ? society : filter
+
+            addItem(propertie);
+        });
+
+        // renderProducts(tempArray, 'best-sellers');
+        // console.log(tempArray);
+        return tempArray;
+    }
 
     return {
         renderBestSellers,
         renderReleases,
-        filter
+        filter,
+        renderProducts
     };
 
 })();
