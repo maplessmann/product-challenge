@@ -16,6 +16,30 @@ html(lang='pt-br')
         link(rel='icon', type='image/png', sizes='16x16', href='images/favicon-16x16.png')
         
     body
+        nav.menu-mobile
+            - const menuMobileItems = ['Masculino', 'Feminino', 'Menino', 'Menina'];
+            each item in menuMobileItems
+                a.menu-item(href='#')= item
+
+        nav.navbar
+            .navbar-fixed
+                .container
+                    .hamburger.btn-mobile-menu
+                        .hamburger-icon
+                            .hamburger-line
+                        .hamburger-label Menu
+                    
+                    a(href='index.html')
+                        img.logo(src='images/nike-logo.png', alt='Logo da Nike')
+                    
+                    ul.menu
+                        - const menuItems = ['Masculino', 'Feminino', 'Menino', 'Menina'];
+                        each item in menuItems
+                            li.menu-item: a.menu-link(href='#')= item
+                            
+                    a.cart-button(href='#', data-count='0')
+                        img.cart-image(src='images/cart.png', alt='Ícone do carrinho de compras')
+                            
         block content
             
         script(src='js/main.js')
