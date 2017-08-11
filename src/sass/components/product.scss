@@ -84,12 +84,6 @@
     }
 }
 
-/*
- * Animate something when the page is loaded
- */
-.has-animation { opacity: 0; }
-.has-animation.is-visible { animation: showUp .6s ease forwards; }
-
 
 /*
  * Single product

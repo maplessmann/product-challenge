@@ -25,7 +25,7 @@ const productModule = (function() {
         const link = () => `produto.html?product=${data.indexOf(product)}&segmentation=${array}`;
 
         const markup = `
-            <div class="slider-item col-xs-12 col-sm-6 col-md-3 has-animation_">
+            <div class="slider-item col-xs-12 col-sm-6 col-md-3 has-animation">
                 <div class="product" data-id="${data.indexOf(product)}">
                     <a href="${link()}" class="product-link">
                         <img class="product-image" src="${product.image}" alt="Imagem de demonstração da chuteira">

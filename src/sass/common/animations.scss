@@ -8,10 +8,23 @@
 }
 
 
-@keyframes showUp {
+@keyframes slideUp {
     0% { transform: translate3d(0, 1rem, 0); }
-    100% {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-    }
+    100% { transform: translate3d(0, 0, 0); }
+}
+
+
+@keyframes appear {
+    100% { opacity: 1; }
+}
+
+
+/*
+ * Animate something when the page is loaded
+ */
+.has-animation { opacity: 0; }
+.has-animation.is-visible {
+    animation:
+        slideUp .6s ease,
+        appear .6s ease forwards;
 }

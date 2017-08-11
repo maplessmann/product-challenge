@@ -337,7 +337,7 @@ a {
 .slider {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  overflow-x: hidden;
+  overflow: hidden;
   padding-top: 1rem; }
 
 /*
@@ -456,16 +456,6 @@ a {
   background-color: rgba(255, 92, 43, 0.7);
   -webkit-box-shadow: 0 2px 35px 0 rgba(255, 92, 43, 0.3);
           box-shadow: 0 2px 35px 0 rgba(255, 92, 43, 0.3); }
-
-/*
- * Animate something when the page is loaded
- */
-.has-animation {
-  opacity: 0; }
-
-.has-animation.is-visible {
-  -webkit-animation: showUp .6s ease forwards;
-          animation: showUp .6s ease forwards; }
 
 /*
  * Single product
@@ -625,23 +615,39 @@ a {
             transform: translate3d(0, 0, 0);
     opacity: 1; } }
 
-@-webkit-keyframes showUp {
+@-webkit-keyframes slideUp {
   0% {
     -webkit-transform: translate3d(0, 1rem, 0);
             transform: translate3d(0, 1rem, 0); }
   100% {
     -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+@keyframes slideUp {
+  0% {
+    -webkit-transform: translate3d(0, 1rem, 0);
+            transform: translate3d(0, 1rem, 0); }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+@-webkit-keyframes appear {
+  100% {
     opacity: 1; } }
 
-@keyframes showUp {
-  0% {
-    -webkit-transform: translate3d(0, 1rem, 0);
-            transform: translate3d(0, 1rem, 0); }
+@keyframes appear {
   100% {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
     opacity: 1; } }
+
+/*
+ * Animate something when the page is loaded
+ */
+.has-animation {
+  opacity: 0; }
+
+.has-animation.is-visible {
+  -webkit-animation: slideUp .6s ease, appear .6s ease forwards;
+          animation: slideUp .6s ease, appear .6s ease forwards; }
 
 .container {
   width: 88%; }
