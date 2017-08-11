@@ -24,11 +24,12 @@ const productModule = (function() {
         const link = () => `produto.html?product=${data.indexOf(product)}&segmentation=${array}`;
 
         const markup = `
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3 has-animation">
                 <div class="product" data-id="${data.indexOf(product)}">
                     <a href="${link()}" class="product-link">
                         <img class="product-image" src="${product.image}" alt="Imagem de demonstração da chuteira">
                     </a>
+                    <div class="product-personalize"> <img class="icon" src="images/personalize.jpg">Personalize </div>
                     <div class="product-title">${product.title}</div>
                     <div class="product-top">${highTop(product['high-top'])}</div>
                     <div class="product-price">

@@ -1,6 +1,7 @@
 .slider {
     flex-wrap: nowrap;
-    overflow-x: hidden;
+    // overflow-x: hidden;
+    overflow-x: scroll;
     padding-top: 1rem;
 }
 

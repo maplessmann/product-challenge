@@ -31,6 +31,19 @@
         }
     }
 
+    &-personalize {
+        color: #666;
+        font-size: .8rem;
+        text-transform: uppercase;
+        padding-bottom: .2rem;
+        border-bottom: 1px solid #e2e2e2;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+
+        .icon { margin-right: .4rem; }
+    }
+
     &-title {
         color: #010101;
         font-weight: 700;
@@ -70,6 +83,12 @@
         }
     }
 }
+
+/*
+ * Animate something when the page is loaded
+ */
+.has-animation { opacity: 0; }
+.has-animation.is-visible { animation: showUp .6s ease forwards; }
 
 
 /*

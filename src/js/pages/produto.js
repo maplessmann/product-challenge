@@ -59,10 +59,10 @@ function makeMarkup(product) {
 
     const markup = `
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
+            <div class="col-xs-12 col-sm-6 col-md-7 has-animation">
                 <div class="product-image" style="background-image: url(${product.image});"></div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-5">
+            <div class="col-xs-12 col-sm-6 col-md-5 has-animation">
                 <h1 class="product-title">${product.title}</h1>
                 <div class="product-top">${highTop(product['high-top'])}</div>
                 <div class="product-price">
