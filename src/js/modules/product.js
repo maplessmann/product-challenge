@@ -17,7 +17,7 @@ const productModule = (function() {
     // Cria o markup de cada produto
     function makeMarkup(data, product, array) {
 
-        const toComma = (price) => price.toFixed(2).replace('.', ',');
+        const toBRL = (price) => price.toFixed(2).replace('.', ',');
 
         const highTop = (isHigh) => isHigh ? 'Cano Alto' : 'Cano Baixo';
 
@@ -32,8 +32,8 @@ const productModule = (function() {
                     <div class="product-title">${product.title}</div>
                     <div class="product-top">${highTop(product['high-top'])}</div>
                     <div class="product-price">
-                        <span class="price-normal">R$ ${toComma(product.price)}</span>
-                        <span class="price-quota">ou 10X ${toComma(product.price / 10 - 0.09)} sem juros</span>
+                        <span class="price-normal">R$ ${toBRL(product.price)}</span>
+                        <span class="price-quota">ou 10X ${toBRL(product.price / 10 - 0.09)} sem juros</span>
                     </div>
                     <a href="${link()}" class="btn">Comprar</a>
                 </div>

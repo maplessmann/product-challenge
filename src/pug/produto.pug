@@ -1,8 +1,19 @@
 extends includes/template.pug
 
 block content
-    section.container
-        h1.title Produto
+    section.container.single-product
+        //- .row
+            .col-xs-12.col-md-7
+                img.product-image(src='http://www.lojadanike.com.br/ArquivoExibir/1133653.jpg')
+                
+            .col-xs-12.col-md-5
+                h1.product-title Chuteira da Nike
+                .product-top Cano Alto
+                .product-price
+                    span.price-normal R$ 300,00
+                    span.price-quota ou 10X 30,00 sem juros
+                
+        
         
         
 block pageScripts
