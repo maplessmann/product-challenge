@@ -1,0 +1,26 @@
+extends includes/template.pug
+
+block content
+    
+    section.container
+        .filter
+            strong.filter-title Chuteiras HyperVenom:
+            include includes/categories.pug
+            
+    section.container
+        .products(data-products='all')
+            h4.products-title Produtos
+            .row
+                
+        .products(data-products='best-sellers')
+            h4.products-title Mais vendidos
+            .row
+                
+        .products(data-products='releases')
+            h4.products-title Lançamentos
+            .row
+
+
+
+block pageScripts
+    script(src='js/pages/produtos.js')

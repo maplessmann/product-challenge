@@ -21,23 +21,26 @@ block content
                 .category
                     input#futebol-society.checkbox(type='checkbox', data-filter='society')
                     label(for="futebol-society") Futebol Society
-            a.btn.btn-dark(href='#') Todos os produtos
+            a.btn.btn-dark(href='produtos.html') Todos os produtos
             
         .catalog            
-            .products.products-best-sellers
+            .products(data-products='best-sellers')
                 h4.products-title Mais vendidos
-                .slider.row
+                .slider-.row
                 .slider-bullets
                     
-            .products.products-releases
+            .products(data-products='releases')
                 h4.products-group-title Lançamentos
-                .slider.row
+                .slider-.row
                 .slider-bullets
         
     section.cta
         .container
             h2.title Just do it.
-            a.btn.btn-dark(href='#') Todos os produtos
+            a.btn.btn-dark(href='produtos.html') Todos os produtos
 
     footer.footer.container
         p Nike Copyright 2017 - all rights reserved
+
+block pageScripts
+    script(src='js/pages/home.js')
