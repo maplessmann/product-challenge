@@ -1,5 +1,41 @@
+function listData() {
+    /*
+     * Incluindo múltiplas Promises como uma maior garantia de acessibilidade dos dados.
+     * A primeira Promise a ser resolvida, irá retornar os dados e ignorar o resto.
+     */
+    const productsLocal = fetch('http://localhost:8000/src/js/data/data.json');
+    const productsRemote = fetch('http://www.raphaelfabeni.com.br/rv/data.json');
+
+    Promise
+        .race([productsLocal, productsRemote])
+        .then(data => data.json())
+        .then(data => {
+            init(data);
+        });
+
+    // Captura todos os catalogos da página e lista os produtos em cada um
+    // Se o data-products === all, lista todos os produtos com um array único
+    // Se não, ele lista com o data.releases e o data['best-sellers'], conforme for o atributo da classe
+    const init = (data) => {
+
+        const catalogs = document.querySelectorAll('.products');
+        catalogs.forEach(catalog => {
+            const attr = catalog.getAttribute('data-products');
+            const productsArray = [];
+            productsArray.push(...data['best-sellers'], ...data.releases);
+
+            if(attr === 'all')
+                productModule.renderData(productsArray, catalog);
+            else
+                productModule.renderData(data[attr], catalog)
+        });
+
+    };
+}
+
+
 /*
- * Toggle the class 'active' when the user activates the mobile menu
+ * Faz o toggle da classe 'active' quando o usuário ativar o menu mobile
  */
 const hamburger = document.querySelector('.hamburger'),
       mobileMenu = document.querySelector('.menu-mobile');
