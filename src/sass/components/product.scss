@@ -114,7 +114,13 @@
         flex-wrap: wrap;
         justify-content: space-between;
 
-        .btn { flex-basis: 100%; }
+        .btn {
+            flex-basis: 100%;
+            font-size: .81rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .btn + .btn { margin-top: 1rem; }
 
     }

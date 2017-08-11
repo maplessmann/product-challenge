@@ -38,14 +38,21 @@ a {
   text-transform: uppercase;
   display: inline-block;
   padding: 1rem 1.2rem;
-  -webkit-transition: opacity .3s ease;
-  -o-transition: opacity .3s ease;
-  transition: opacity .3s ease;
+  -webkit-transition: opacity .3s ease, -webkit-transform .3s ease;
+  transition: opacity .3s ease, -webkit-transform .3s ease;
+  -o-transition: opacity .3s ease, transform .3s ease;
+  transition: opacity .3s ease, transform .3s ease;
+  transition: opacity .3s ease, transform .3s ease, -webkit-transform .3s ease;
   cursor: pointer;
   outline: none; }
 
 .btn:hover {
   opacity: .7; }
+
+.btn:active {
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95); }
 
 .btn-dark {
   background-color: #313131;
@@ -493,7 +500,17 @@ a {
 
 .single-product .product-actions .btn {
   -ms-flex-preferred-size: 100%;
-      flex-basis: 100%; }
+      flex-basis: 100%;
+  font-size: .81rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
 .single-product .product-actions .btn + .btn {
   margin-top: 1rem; }
@@ -516,7 +533,7 @@ a {
 .cart-button {
   position: relative; }
 
-.cart-button::after {
+.cart-button.has-product::after {
   content: attr(data-count);
   position: absolute;
   top: -8%;
@@ -535,7 +552,10 @@ a {
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-animation: slideUpEase .2s ease forwards;
+          animation: slideUpEase .2s ease forwards;
+  opacity: 0; }
 
 .cart-image {
   max-width: 2.3rem; }
@@ -637,6 +657,24 @@ a {
 
 @keyframes appear {
   100% {
+    opacity: 1; } }
+
+@-webkit-keyframes slideUpEase {
+  0% {
+    -webkit-transform: translate3d(0, 0.2rem, 0);
+            transform: translate3d(0, 0.2rem, 0); }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    opacity: 1; } }
+
+@keyframes slideUpEase {
+  0% {
+    -webkit-transform: translate3d(0, 0.2rem, 0);
+            transform: translate3d(0, 0.2rem, 0); }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
     opacity: 1; } }
 
 /*

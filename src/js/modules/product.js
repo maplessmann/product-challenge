@@ -13,7 +13,6 @@ const productModule = (function() {
             list.insertAdjacentHTML('beforeend', updateMarkup(data, product, attr))
         });
 
-        // loadAnimation();
         // renderBullets(catalog);
     }
 

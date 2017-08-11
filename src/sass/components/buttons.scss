@@ -10,11 +10,15 @@
     text-transform: uppercase;
     display: inline-block;
     padding: 1rem 1.2rem;
-    transition: opacity .3s ease;
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
     cursor: pointer;
     outline: none;
 
     &:hover { opacity: .7; }
+
+    &:active { transform: scale(.95); }
 }
 
 .btn-dark {

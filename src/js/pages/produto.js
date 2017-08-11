@@ -10,6 +10,7 @@ Promise
     .then(data => data.json())
     .then(data => {
         init(data);
+        initCart();
     })
 
 
@@ -47,12 +48,12 @@ function renderProduct(id, array) {
         .map(product => product)
 
     productContainer.innerHTML = makeMarkup(...product);
-    // loadAnimation();
 }
 
 
 // Cria o markup do produto
 function makeMarkup(product) {
+    document.title = product.title;
 
     const toBRL = (price) => price.toFixed(2).replace('.', ',');
 
@@ -71,7 +72,7 @@ function makeMarkup(product) {
                     <span class="price-quota">ou ${product.installments.number}X ${toBRL(product.installments.value)} sem juros</span>
                 </div>
                 <div class="product-actions">
-                    <a href="#" class="btn">Comprar</a>
+                    <a href="#" class="btn add-to-cart">Adicionar no carrinho</a>
                     <a href="#" class="btn btn-dark">Personalize</a>
                 </div>
             </div>
@@ -79,4 +80,22 @@ function makeMarkup(product) {
     `;
 
     return markup;
+}
+
+
+function initCart() {
+    const cartTrigger = document.querySelector('.btn.add-to-cart');
+    cartTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        updateCart();
+    });
+
+    function updateCart() {
+        let cartButton = document.querySelector('.cart-button');
+            cartTotal = cartButton.getAttribute('data-count');
+
+        cartButton.classList.add('has-product');
+        cartButton.setAttribute('data-count', Number(cartTotal) + 1);
+    }
 }
