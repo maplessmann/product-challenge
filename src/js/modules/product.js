@@ -5,12 +5,13 @@ const productModule = (function() {
     // Lista os produtos
     function renderData(data, elem) {
 
-        const list = elem.querySelector('.row');
-        const attr = elem.getAttribute('data-products');
+        const list = elem.querySelector('.row'),
+              attr = elem.getAttribute('data-products');
         data.forEach(product => {
             list.insertAdjacentHTML('beforeend', makeMarkup(data, product, attr))
         });
 
+        renderBullets(elem);
     }
 
 
@@ -42,6 +43,15 @@ const productModule = (function() {
         `;
 
         return markup;
+    }
+
+    function renderBullets(elem) {
+        const bullets = elem.querySelector('.slider-bullets');
+        const productsAmount = elem.querySelectorAll('.product');
+
+        productsAmount.forEach(item => {
+            bullets.insertAdjacentHTML('beforeend', '<div class="bullet"></div>');
+        });
     }
 
     return {
