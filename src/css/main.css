@@ -337,7 +337,7 @@ a {
 .slider {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  overflow-x: scroll;
+  overflow-x: hidden;
   padding-top: 1rem; }
 
 /*
@@ -359,10 +359,14 @@ a {
   cursor: pointer; }
 
 .bullet.active {
-  background-color: #ccc; }
+  background-color: #aaa; }
 
 .bullet + .bullet {
   margin-left: .5rem; }
+
+@media only screen and (max-width: 48em) {
+  .slider {
+    overflow-x: scroll; } }
 
 /*
  * Product
