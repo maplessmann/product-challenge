@@ -3,20 +3,23 @@ const productModule = (function() {
 
 
     // Lista os produtos
-    function renderData(data, elem) {
+    function renderData(data, catalog) {
 
-        const list = elem.querySelector('.row'),
-              attr = elem.getAttribute('data-products');
+        const list = catalog.querySelector('.row'),
+              attr = catalog.getAttribute('data-products');
+
+        list.innerHTML = ''; // Reset markup
         data.forEach(product => {
-            list.insertAdjacentHTML('beforeend', makeMarkup(data, product, attr))
+            list.insertAdjacentHTML('beforeend', updateMarkup(data, product, attr))
         });
 
-        // renderBullets(elem);
+        // loadAnimation();
+        // renderBullets(catalog);
     }
 
 
     // Cria o markup de cada produto
-    function makeMarkup(data, product, array) {
+    function updateMarkup(data, product, array) {
 
         const toBRL = (price) => price.toFixed(2).replace('.', ',');
 
@@ -35,7 +38,7 @@ const productModule = (function() {
                     <div class="product-top">${highTop(product['high-top'])}</div>
                     <div class="product-price">
                         <span class="price-normal">R$ ${toBRL(product.price)}</span>
-                        <span class="price-quota">ou 10X ${toBRL(product.price / 10 - 0.09)} sem juros</span>
+                        <span class="price-quota">ou ${product.installments.number}X ${toBRL(product.installments.value)} sem juros</span>
                     </div>
                     <a href="${link()}" class="btn">Comprar</a>
                 </div>
@@ -54,8 +57,36 @@ const productModule = (function() {
         });
     }
 
+
+    function filter(data, catalog, filter) {
+        const tempArray = [];
+
+        const filterCategory = data
+            .filter(obj => obj.category === filter)
+            .map(obj => obj);
+
+        const filterHighTop = (value) => {
+            return data
+                .filter(obj => obj['high-top'] == value)
+                .map(obj => obj);
+        }
+
+        const filtered = filter === 'cano-alto' ? filterHighTop(true) : filter === 'cano-baixo' ? filterHighTop(false) : filterCategory
+
+        tempArray.push(...filtered)
+
+        productModule.renderData(tempArray, catalog);
+        loadAnimation();
+
+        // console.log('Catalog:', catalog);
+        // console.log(tempArray);
+    }
+
+
+
     return {
-        renderData
+        renderData,
+        filter
     }
 
 })();

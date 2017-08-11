@@ -47,6 +47,7 @@ function renderProduct(id, array) {
         .map(product => product)
 
     productContainer.innerHTML = makeMarkup(...product);
+    // loadAnimation();
 }
 
 
@@ -67,7 +68,7 @@ function makeMarkup(product) {
                 <div class="product-top">${highTop(product['high-top'])}</div>
                 <div class="product-price">
                     <span class="price-normal">R$ ${toBRL(product.price)}</span>
-                    <span class="price-quota">ou 10X ${toBRL(product.price / 10 - 0.09)} sem juros</span>
+                    <span class="price-quota">ou ${product.installments.number}X ${toBRL(product.installments.value)} sem juros</span>
                 </div>
                 <div class="product-actions">
                     <a href="#" class="btn">Comprar</a>

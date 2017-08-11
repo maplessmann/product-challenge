@@ -11,6 +11,7 @@ function listData() {
         .then(data => data.json())
         .then(data => {
             init(data);
+            initFilter(data);
         });
 
     // Captura todos os catalogos da página e lista os produtos em cada um
@@ -31,6 +32,43 @@ function listData() {
         });
 
     };
+}
+
+
+/*
+ * Filtra os produtos
+ */
+function initFilter(data) {
+
+    const categories = document.querySelectorAll('.filter .categories .checkbox');
+    categories.forEach(category => {
+        category.addEventListener('change', findCatalogs)
+    });
+
+    function findCatalogs() {
+
+        const thisFilter = this.getAttribute('data-filter');
+        console.log('Filtro:', thisFilter);
+
+        const catalogs = document.querySelectorAll('.products');
+        catalogs.forEach(catalog => {
+            const attr = catalog.getAttribute('data-products');
+            const productsArray = [];
+            productsArray.push(...data['best-sellers'], ...data.releases);
+
+            if(attr === 'all')
+                productModule.filter(productsArray, catalog, thisFilter);
+            else
+                productModule.filter(data[attr], catalog, thisFilter);
+        });
+
+        // Ativa somente um checkbox por vez
+        const checkboxes = this.closest('.categories').querySelectorAll('.checkbox');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+            this.checked = true;
+        });
+    }
 }
 
 
@@ -60,16 +98,16 @@ hamburger.addEventListener('click', menuToggle);
             loadAnimation();
         }, 500);
     });
-
-    function loadAnimation() {
-        const items = document.querySelectorAll('.has-animation');
-        items.forEach((item, index) => {
-            setTimeout(() => {
-                item.classList.add('is-visible');
-            }, 120 * index);
-        });
-    }
 })();
+
+function loadAnimation() {
+    const items = document.querySelectorAll('.has-animation');
+    items.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('is-visible');
+        }, 120 * index);
+    });
+}
 
 
 

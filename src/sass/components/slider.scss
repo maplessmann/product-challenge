@@ -18,7 +18,7 @@
     background-color: #ddd;
     cursor: pointer;
 
-    &.active { background-color: #aaa }
+    &.active { background-color: #aaa; }
 
     & + & { margin-left: .5rem; }
 }
