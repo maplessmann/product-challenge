@@ -13,7 +13,7 @@ const productModule = (function() {
             list.insertAdjacentHTML('beforeend', updateMarkup(data, product, attr))
         });
 
-        // renderBullets(catalog);
+        renderBullets(catalog);
     }
 
 
@@ -47,13 +47,23 @@ const productModule = (function() {
         return markup;
     }
 
-    function renderBullets(elem) {
-        const bullets = elem.querySelector('.slider-bullets');
-        const productsAmount = elem.querySelectorAll('.product');
+    function renderBullets(catalog) {
+        const bullets = catalog.querySelector('.slider-bullets'),
+              products = catalog.querySelectorAll('.product'),
+              productsAmount = Math.floor(products.length / 2 + 1);
 
-        productsAmount.forEach(item => {
-            bullets.insertAdjacentHTML('beforeend', '<div class="bullet"></div>');
-        });
+        if(bullets) {
+            // Adiciona a quantidade de bullets de acordo com a quantidade de produtos no slider
+            const total = Array(productsAmount).fill().map((_, i) => i + 1);
+            bullets.innerHTML = '';
+            total.forEach(i => {
+                bullets.insertAdjacentHTML('beforeend', '<div class="bullet"></div>');
+            });
+
+            // Adiciona a classe 'active' na primeira bullet
+            bullets.querySelector('.bullet:first-child').classList.add('active');
+        }
+
     }
 
 
@@ -76,6 +86,7 @@ const productModule = (function() {
 
         productModule.renderData(tempArray, catalog);
         loadAnimation();
+        renderBullets(catalog);
 
         // console.log('Catalog:', catalog);
         // console.log(tempArray);

@@ -116,22 +116,30 @@ function loadAnimation() {
  */
 const slider = document.querySelectorAll('.slider-bullets');
 slider.forEach(item => {
-    const bullets = item.querySelectorAll('.bullet');
-    bullets.forEach((bullet, index) => {
-        bullet.addEventListener('click', slide);
 
-        function slide() {
+    // Utilizando Event Delegation para 'escutar' elementos adicionados dinamicamente na página
+    document.querySelector('body').addEventListener('click', function() {
 
-            // Passa o slider
-            const slider = this.closest('.products').querySelectorAll('.slider .slider-item');
-            slider.forEach(item => {
-                item.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
-            });
+        const bullets = item.querySelectorAll('.bullet');
+        bullets.forEach((bullet, index) => {
 
-            // Adiciona a class 'active' na bullet selecionada e remove das demais
-            const all = this.parentNode.querySelectorAll('.bullet');
-            all.forEach(bullet => bullet.classList.remove('active'));
-            this.classList.add('active');
-        }
+            if(event.target === bullet) {
+
+                // Faz a navegação no slider
+                const slider = event.target.closest('.products').querySelectorAll('.slider .slider-item');
+                slider.forEach(item => {
+                    item.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
+                });
+
+                // Adiciona a classe 'active' na bullet selecionada e remove das demais
+                const all = event.target.parentNode.querySelectorAll('.bullet');
+                all.forEach(bullet => bullet.classList.remove('active'));
+                event.target.classList.add('active');
+
+            }
+
+        });
+
     });
+
 });
