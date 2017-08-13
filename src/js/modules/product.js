@@ -2,15 +2,17 @@ const productModule = (function() {
     'use strict';
 
 
-    // Lista os produtos
+    // Lista os produtos na página
     function renderData(data, catalog) {
 
         const list = catalog.querySelector('.row'),
               attr = catalog.getAttribute('data-products');
 
-        list.innerHTML = ''; // Reset markup
+        // limpa o markup dos produtos
+        list.innerHTML = '';
+
         data.forEach(product => {
-            list.insertAdjacentHTML('beforeend', updateMarkup(data, product, attr))
+            list.insertAdjacentHTML('beforeend', createMarkup(data, product, attr))
         });
 
         renderBullets(catalog);
@@ -18,13 +20,13 @@ const productModule = (function() {
 
 
     // Cria o markup de cada produto
-    function updateMarkup(data, product, array) {
+    function createMarkup(data, product, array) {
 
         const toBRL = (price) => price.toFixed(2).replace('.', ',');
 
         const highTop = (isHigh) => isHigh ? 'Cano Alto' : 'Cano Baixo';
 
-        const link = () => `produto.html?product=${data.indexOf(product)}&segmentation=${array}`;
+        const link = () => `produto.html?product=${data.indexOf(product)}&catalog=${array}`;
 
         const markup = `
             <div class="slider-item col-xs-12 col-sm-6 col-md-3 has-animation">
@@ -47,14 +49,20 @@ const productModule = (function() {
         return markup;
     }
 
+
+    // Adiciona uma navegação (bullets) abaixo do slider
     function renderBullets(catalog) {
+
         const bullets = catalog.querySelector('.slider-bullets'),
               products = catalog.querySelectorAll('.product'),
-              productsAmount = Math.floor(products.length / 2 + 1);
+              bulletsAmount = products.length <= 4 ? 1 : products.length - 3;
 
         if(bullets) {
-            // Adiciona a quantidade de bullets de acordo com a quantidade de produtos no slider
-            const total = Array(productsAmount).fill().map((_, i) => i + 1);
+            /**
+             * Faz um loop para adicionar a quantidade de bullets de acordo com a quantidade de produtos no slider
+             * Com a quantidade de bullets, cria um array, para que seja possível fazer o loop de maneira funcional
+             */
+            const total = Array(bulletsAmount).fill().map((_, i) => i + 1);
             bullets.innerHTML = '';
             total.forEach(i => {
                 bullets.insertAdjacentHTML('beforeend', '<div class="bullet"></div>');
@@ -63,12 +71,11 @@ const productModule = (function() {
             // Adiciona a classe 'active' na primeira bullet
             bullets.querySelector('.bullet:first-child').classList.add('active');
         }
-
     }
 
 
+    // Faz o filtro dos produtos
     function filter(data, catalog, filter) {
-        const tempArray = [];
 
         const filterCategory = data
             .filter(obj => obj.category === filter)
@@ -82,14 +89,13 @@ const productModule = (function() {
 
         const filtered = filter === 'cano-alto' ? filterHighTop(true) : filter === 'cano-baixo' ? filterHighTop(false) : filterCategory
 
+        const tempArray = [];
+
         tempArray.push(...filtered)
 
         productModule.renderData(tempArray, catalog);
         loadAnimation();
         renderBullets(catalog);
-
-        // console.log('Catalog:', catalog);
-        // console.log(tempArray);
     }
 
 

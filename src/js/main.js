@@ -1,6 +1,7 @@
 function listData() {
-    /*
-     * Incluindo múltiplas Promises como uma maior garantia de acessibilidade dos dados.
+
+    /**
+     * Inclui múltiplas Promises como uma maior garantia de acessibilidade dos dados.
      * A primeira Promise a ser resolvida, irá retornar os dados e ignorar o resto.
      */
     const productsLocal = fetch('http://localhost:8000/src/js/data/data.json');
@@ -14,9 +15,11 @@ function listData() {
             initFilter(data);
         });
 
-    // Captura todos os catalogos da página e lista os produtos em cada um
-    // Se o data-products === all, lista todos os produtos com um array único
-    // Se não, ele lista com o data.releases e o data['best-sellers'], conforme for o atributo da classe
+    /**
+     * Captura todos os catálogos da página e lista os produtos em cada um
+     * Se o catalogo for 'all', lista todos os produtos com um array único
+     * Se não, lista o array específico de cada catalogo
+     */
     const init = (data) => {
 
         const catalogs = document.querySelectorAll('.products');
@@ -35,9 +38,7 @@ function listData() {
 }
 
 
-/*
- * Filtra os produtos
- */
+// Filtra os produtos
 function initFilter(data) {
 
     const categories = document.querySelectorAll('.filter .categories .checkbox');
@@ -47,8 +48,7 @@ function initFilter(data) {
 
     function findCatalogs() {
 
-        const thisFilter = this.getAttribute('data-filter');
-        console.log('Filtro:', thisFilter);
+        const currentFilter = this.getAttribute('data-filter');
 
         const catalogs = document.querySelectorAll('.products');
         catalogs.forEach(catalog => {
@@ -57,9 +57,9 @@ function initFilter(data) {
             productsArray.push(...data['best-sellers'], ...data.releases);
 
             if(attr === 'all')
-                productModule.filter(productsArray, catalog, thisFilter);
+                productModule.filter(productsArray, catalog, currentFilter);
             else
-                productModule.filter(data[attr], catalog, thisFilter);
+                productModule.filter(data[attr], catalog, currentFilter);
         });
 
         // Ativa somente um checkbox por vez
@@ -72,9 +72,7 @@ function initFilter(data) {
 }
 
 
-/*
- * Faz o toggle da classe 'active' quando o usuário ativar o menu mobile
- */
+// Faz o toggle da classe 'active' quando o usuário ativar o menu mobile
 const hamburger = document.querySelector('.hamburger'),
       mobileMenu = document.querySelector('.menu-mobile');
 
@@ -86,10 +84,7 @@ function menuToggle() {
 hamburger.addEventListener('click', menuToggle);
 
 
-
-/*
- * Carregada as animações em sequência
- */
+// Carregada as animações em sequência
 (function() {
     const body = document.querySelector('body');
 
@@ -110,10 +105,7 @@ function loadAnimation() {
 }
 
 
-
-/*
- * Slider
- */
+// Slider
 const slider = document.querySelectorAll('.slider-bullets');
 slider.forEach(item => {
 
@@ -137,9 +129,6 @@ slider.forEach(item => {
                 event.target.classList.add('active');
 
             }
-
         });
-
     });
-
 });
