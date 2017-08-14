@@ -2,18 +2,20 @@ extends includes/template.pug
 
 block content
     section.container.single-product
-        //- .row
+                
+    #personalize.modal
+        a.close-icon(href='#')
+        .row
             .col-xs-12.col-md-7
-                img.product-image(src='http://www.lojadanike.com.br/ArquivoExibir/1133653.jpg')
-                
+                img.personalize-image(src='', alt='Imagem do produto')
             .col-xs-12.col-md-5
-                h1.product-title Chuteira da Nike
-                .product-top Cano Alto
-                .product-price
-                    span.price-normal R$ 300,00
-                    span.price-quota ou 10X 30,00 sem juros
-                
-        
+                h3.modal-title Personalize
+                label(for='#name') Digite seu nome
+                input#name(type='text')
+                label(for='#color') Escolha uma cor para o texto
+                input#color(type='color')
+
+    a.overlay(href='#')
         
         
 block pageScripts

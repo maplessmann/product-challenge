@@ -75,11 +75,13 @@ function makeMarkup(product) {
                 </div>
                 <div class="product-actions">
                     <a href="#" class="btn add-to-cart">Adicionar no carrinho</a>
-                    <a href="#" class="btn btn-dark">Personalize</a>
+                    <a href="#personalize" class="btn btn-dark">Personalize</a>
                 </div>
             </div>
         </div>
     `;
+
+    document.querySelector('.personalize-image').src = product.image;
 
     return markup;
 }

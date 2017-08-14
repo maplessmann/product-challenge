@@ -28,6 +28,15 @@
 }
 
 
+@keyframes showModal {
+    0% { transform: translate3d(-50%, -50%, 0) scale(.9); }
+    100% {
+        transform: translate3d(-50%, -50%, 0) scale(1);
+        // opacity: 1;
+    }
+}
+
+
 /*
  * Animate something when the page is loaded
  */
