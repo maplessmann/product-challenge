@@ -20,6 +20,9 @@
     &.active { background-color: #aaa; }
 
     & + & { margin-left: .5rem; }
+
+    /* Hide the bullet when there is only one */
+    &:only-of-type { display: none; }
 }
 
 @media only screen and (max-width: 48em) {
