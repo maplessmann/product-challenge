@@ -27,6 +27,7 @@ a {
 /*
  * Buttons
  */
+/* Default button */
 .btn {
   background-color: #ff5c2b;
   border: 0;
@@ -54,6 +55,7 @@ a {
       -ms-transform: scale(0.95);
           transform: scale(0.95); }
 
+/* Dark button */
 .btn-dark {
   background-color: #313131;
   color: #fff; }
@@ -61,6 +63,7 @@ a {
 /*
  * Menu
  */
+/* Hamburger menu icon */
 .hamburger {
   color: #000;
   padding: .5rem 0;
@@ -151,6 +154,7 @@ a {
   height: 100%;
   z-index: 2; }
 
+/* Mobile menu */
 .menu-mobile {
   display: none;
   position: fixed;
@@ -245,10 +249,76 @@ a {
           animation-timing-function: cubic-bezier(0.25, 0.03, 0.25, 1); }
 
 /*
- * Filter
+ * Navbar
  */
+.navbar {
+  height: 64px; }
+
+.navbar .navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9;
+  -webkit-transform: translateZ(0);
+  /* Avoid flicker with fixed elements */
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  /* Do the same job */ }
+
+.navbar .container {
+  height: 64px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: .8rem;
+  padding-bottom: .8rem; }
+
+.navbar .logo {
+  max-width: 5rem; }
+
+.navbar .menu {
+  display: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.navbar .menu-item {
+  list-style: none;
+  display: inline-block; }
+
+.navbar .menu-link {
+  color: #000;
+  font-size: .83rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+@media only screen and (min-width: 48em) {
+  .navbar .container {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .navbar .btn-mobile-menu {
+    display: none; }
+  .navbar .menu {
+    display: block;
+    margin-left: 2rem; }
+  .navbar .menu-item + .menu-item {
+    margin-left: 1rem; }
+  .navbar .cart-button {
+    margin-left: auto; } }
+
 /*
- * Categories
+ * Filter
  */
 .filter {
   display: -webkit-box;
@@ -347,9 +417,7 @@ a {
   overflow: hidden;
   padding-top: 1rem; }
 
-/*
- * Bullets to controll the slider
- */
+/* Bullets to controll the slider */
 .slider-bullets {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -378,18 +446,14 @@ a {
 /*
  * Product
  */
-/*
- * Group of products
- */
+/* Group of products */
 .products-title {
   margin-top: 0; }
 
 .products + .products {
   margin-top: 2rem; }
 
-/*
- * Product item
- */
+/* Product item */
 .product {
   border: 2px solid transparent;
   font-size: .9rem;
@@ -465,9 +529,7 @@ a {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); } }
 
-/*
- * Single product
- */
+/* Single product */
 .single-product {
   font-size: .9rem;
   padding-bottom: 3rem; }
@@ -528,9 +590,7 @@ a {
 /*
  * Cart
  */
-/*
- * Cart button
- */
+/* Cart button */
 .cart-button {
   position: relative; }
 
@@ -785,72 +845,6 @@ a {
   .col-md-offset-9 {
     padding-left: 1.5rem;
     padding-right: 1.5rem; } }
-
-.navbar {
-  height: 64px; }
-
-.navbar .navbar-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  z-index: 9;
-  -webkit-transform: translateZ(0);
-  /* Avoids "jump" bug with fixed elements on chrome */
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  /* Do the same job */ }
-
-.navbar .container {
-  height: 64px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-top: .8rem;
-  padding-bottom: .8rem; }
-
-.navbar .logo {
-  max-width: 5rem; }
-
-.navbar .menu {
-  display: none;
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0; }
-
-.navbar .menu-item {
-  list-style: none;
-  display: inline-block; }
-
-.navbar .menu-link {
-  color: #000;
-  font-size: .83rem;
-  font-weight: 700;
-  text-transform: uppercase; }
-
-@media only screen and (min-width: 48em) {
-  .navbar .container {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start; }
-  .navbar .btn-mobile-menu {
-    display: none; }
-  .navbar .menu {
-    display: block;
-    margin-left: 2rem; }
-  .navbar .menu-item + .menu-item {
-    margin-left: 1rem; }
-  .navbar .cart-button {
-    margin-left: auto; } }
 
 .header-image {
   width: 100%; }

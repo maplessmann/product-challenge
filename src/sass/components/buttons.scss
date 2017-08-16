@@ -1,4 +1,4 @@
-// Default button
+/* Default button */
 .btn {
     background-color: $color-default;
     border: 0;
@@ -21,6 +21,7 @@
     &:active { transform: scale(.95); }
 }
 
+/* Dark button */
 .btn-dark {
     background-color: #313131;
     color: #fff;
