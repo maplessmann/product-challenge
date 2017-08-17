@@ -1,5 +1,5 @@
 /**
- * Incluindo múltiplas Promises como uma maior garantia de acessibilidade dos dados.
+ * Inclui múltiplas Promises como uma maior garantia de acessibilidade dos dados.
  * A primeira Promise a ser resolvida, irá retornar os dados e ignorar o resto.
  */
 const productsLocal = fetch('http://localhost:8000/src/js/data/data.json');
@@ -14,11 +14,7 @@ Promise
     })
 
 
-/**
- * Captura todos os catalogos da página e lista os produtos em cada um
- * Se o data-products === all, lista todos os produtos com um array único
- * Se não, ele lista com o data.releases e o data['best-sellers'], conforme for o atributo da classe
- */
+// Captura os parâmetros passados pela URL para renderizar o produto
 function init(data) {
 
     const productId = getURLParameter('product');
