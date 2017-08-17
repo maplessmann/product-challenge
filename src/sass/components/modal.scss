@@ -40,6 +40,7 @@
     box-sizing: content-box;
     opacity: .7;
     transition: opacity .2s ease;
+    z-index: 9;
 
     &::before,
     &::after {
@@ -66,16 +67,3 @@
 
     ~ .overlay { display: block; }
 }
-
-
-[type='color'] {
-    border: 0;
-    background-color: transparent;
-    width: 4rem;
-    height: 2rem;
-    cursor: pointer;
-}
-
-.modal p { color: var(--personalize-color); }
-
-.personalize-image { width: 100%; }

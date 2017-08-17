@@ -5,15 +5,19 @@ block content
                 
     #personalize.modal
         a.close-icon(href='#')
-        .row
-            .col-xs-12.col-md-7
-                img.personalize-image(src='', alt='Imagem do produto')
-            .col-xs-12.col-md-5
+        .personalize-widget.row
+            .col-xs-12.col-sm-7.wrapper
+                img.image(src='', alt='Imagem do produto')
+                .name Seu nome
+                .logo
+            .col-xs-12.col-sm-5
                 h3.modal-title Personalize
-                label(for='#name') Digite seu nome
-                input#name(type='text')
-                label(for='#color') Escolha uma cor para o texto
-                input#color(type='color')
+                .input-group
+                    label.label(for='#name') Digite seu nome
+                    input#input-name.input(type='text', placeholder='Seu nome', maxLength='10')
+                .input-group
+                    label.label(for='#color') Escolha uma cor para o texto
+                    input#color-picker(type='color')
 
     a.overlay(href='#')
         

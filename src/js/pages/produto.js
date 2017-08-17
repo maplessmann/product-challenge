@@ -81,7 +81,7 @@ function makeMarkup(product) {
         </div>
     `;
 
-    document.querySelector('.personalize-image').src = product.image;
+    document.querySelector('.personalize-widget .image').src = product.image;
 
     return markup;
 }
@@ -103,3 +103,21 @@ function initCart() {
         cartButton.setAttribute('data-count', Number(cartTotal) + 1);
     }
 }
+
+
+
+// Faz a personalização do texto e cor do produto
+(function() {
+    const colorPicker = document.querySelector('#color-picker'),
+          inputName = document.querySelector('#input-name'),
+          name = document.querySelector('.personalize-widget .name');
+
+    colorPicker.addEventListener('change', function() {
+        document.body.style = '--personalize-color: ' + colorPicker.value;
+    });
+
+    inputName.addEventListener('keyup', function() {
+        const text = this.value;
+        name.innerHTML = text;
+    });
+})();

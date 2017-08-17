@@ -35,14 +35,21 @@
     </nav>
     <section class="container single-product"></section>
     <div class="modal" id="personalize"><a class="close-icon" href="#"></a>
-      <div class="row">
-        <div class="col-xs-12 col-md-7"><img class="personalize-image" src="" alt="Imagem do produto"></div>
-        <div class="col-xs-12 col-md-5">
+      <div class="personalize-widget row">
+        <div class="col-xs-12 col-sm-7 wrapper"><img class="image" src="" alt="Imagem do produto">
+          <div class="name">Seu nome</div>
+          <div class="logo"></div>
+        </div>
+        <div class="col-xs-12 col-sm-5">
           <h3 class="modal-title">Personalize</h3>
-          <label for="#name">Digite seu nome</label>
-          <input id="name" type="text">
-          <label for="#color">Escolha uma cor para o texto</label>
-          <input id="color" type="color">
+          <div class="input-group">
+            <label class="label" for="#name">Digite seu nome</label>
+            <input class="input" id="input-name" type="text" placeholder="Seu nome" maxLength="10">
+          </div>
+          <div class="input-group">
+            <label class="label" for="#color">Escolha uma cor para o texto</label>
+            <input id="color-picker" type="color">
+          </div>
         </div>
       </div>
     </div><a class="overlay" href="#"></a>

@@ -1,0 +1,60 @@
+.personalize-widget {
+
+    > .wrapper {
+        position: relative;
+
+        > .image { width: 100%; }
+
+        > .name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 150%) rotate(-15deg);
+            font-size: .8rem;
+            text-shadow: 0 0 1px rgba(255,255,255,.42);
+
+            color: var(--personalize-color, #000);
+        }
+
+        > .logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+
+            width: 70px;
+            height: 25px;
+            background-image: url('../images/personalize-logo.png');
+            background-blend-mode: luminosity;
+
+            background-color: var(--personalize-color, #000);
+        }
+    }
+
+}
+
+.input-group {
+
+    & + & { margin-top: 1.5rem; }
+
+    > .label {
+        color: #525769;
+        font-size: .95rem;
+        margin-bottom: .2rem;
+        display: block;
+    }
+
+    > .input {
+        padding: .5rem .4rem;
+        border: 1px solid #c1c4ce;
+        border-radius: 2px;
+        width: 100%;
+    }
+
+    > [type='color'] {
+        border: 0;
+        background-color: transparent;
+        width: 4rem;
+        height: 2.8rem;
+        cursor: pointer;
+    }
+}
